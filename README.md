@@ -43,13 +43,8 @@ To setup a local development environment with
 echo DB_HOST=db > .env
 echo DB_USER=postgres >> .env
 ```
-## Medford updates
-```
-# Medford update 1
-edit Dockerfile to reflect ruby 2.6.3
-
-# Medford update 2 - Update mimemagic
-bundle update mimemagic 
+*** Medford note: edit Dockerfile to reflect ruby 2.6.3
+*** Medford note: bundle update mimemagic 
 
 # Medford update 3 - add user information to .env file
 USER=theuser
@@ -107,47 +102,48 @@ medford update #6
     see - https://stackoverflow.com/questions/60368999/why-wont-my-docker-postgresql-container-run-anymore
 
     docker-compose.yml:
-version: '2'
-services:
-  db:
-    image: postgres
-    environment: 
-      PGUSER: <%= ENV['USER'] %>
-      POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
-  web:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    environment:
-      PGDATABASE: adopt_a_thing_development
-      PGUSER: <%= ENV['USER'] %>
-      POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
-      PGHOST: db
-    volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+        version: '2'
+        services:
+        db:
+            image: postgres
+            environment: 
+            PGUSER: <%= ENV['USER'] %>
+            POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
+        web:
+            build: .
+            command: bundle exec rails s -p 3000 -b '0.0.0.0'
+            environment:
+            PGDATABASE: adopt_a_thing_development
+            PGUSER: <%= ENV['USER'] %>
+            POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
+            PGHOST: db
+            volumes:
+            - .:/myapp
+            ports:
+            - "3000:3000"
+            depends_on:
+            - db
 
-    
+        *** medford note: Adjust the map base location in ./app/assets/javascripts/main.js.rb. 
+
+        *** medford note: Adjust the legend icons in ./app/assets/javascripts/main.js.rb
+
+        *** medford note: change the video link in /app/views/main/index.html.haml
+
+        *** medford note: change the logos in /app/assets/images/logos
+            
 ```
 ## Docker (continued)
 ```
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
 
-** FATAL:  password authentication failed for user "postgres"
-Couldn't create 'adopt_a_thing_development' database. Please check your configuration.
-rake aborted!
-PG::ConnectionBad: FATAL:  password authentication failed for user "postgres"
-
 medford note 13:
 need to create a csv file similar to Savannah's savannah_drains.csv to use Savannah's data.rake
 
 medford note 14: 
-replace data.rake with Savannah's - based on advice from San Francisco implementation: 
-    # class for importing things from CSV datasource is currently very specific to drains from DataSF 
-change Savannah's data.rake to reflect medford.csv of drains
+replace /lib/tasks/data.rake with Savannah's - based on advice from San Francisco implementation: "the class for importing things from CSV datasource is currently very specific to drains from DataSF"
+change Savannah's data.rake code to reflect using medford's csv file of drains
 
 medford note 15:
 for binding.pry to work: https://gist.github.com/briankung/ebfb567d149209d2d308576a6a34e5d8
@@ -161,13 +157,18 @@ docker-compose run --rm web bundle exec rake data:load_drains
 # OR: don't load all that data, and load the seed data:
 # docker-compose run --rm web bundle exec rake db:seed
 
-medford note 16:
- Adjust initialLocation in ./app/assets/javascripts/main.js.rb. 
 
  medford note 17:
  whenever loading new assets, such as .png files, always pre-compile assets (see step 3 below)., then add, commit and push to heroku.
 
 # Start web server: 
+
+<!-- ** medford note set environment variables first?
+export GOOGLE_MAPS_KEY=(key)
+export GOOGLE_MAPS_JAVASCRIPT_API_KEY=(key)
+export GOOGLE_GEOCODER_API_KEY=(key) 
+-->
+
 docker-compose build 
 docker-compose up
 
@@ -175,11 +176,31 @@ docker-compose up
 ```
 
 ## Usage
-    rails server 
-    medford note: don't do this, do "docker-compose up" instead.
+    start server with:
+    docker-compose up
 
 ## Seed Data
     bundle exec rake data:load_things
+
+### Google Maps API Service  (from Adopt-A-Drain Savannah)
+You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
+After you have obtained the key, you will need to set it as environment variables.
+
+medford note: #10
+for dev box to work, need to update .env file to include:
+    GOOGLE_MAPS_JAVASCRIPT_API_KEY=(your key)
+    SECRET_KEY_BASE=(your key)
+
+and need to update secrets.yml file as:
+development:
+  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+
+test:
+  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+
+** medford note - need to update initial map coordinates
 
 ## Deploying to Heroku
 A successful deployment to Heroku requires a few setup steps:
@@ -189,6 +210,10 @@ medford note:
     heroku login
     heroku git:remote -a `app-name`
     heroku stack:set heroku-18
+
+    change /config/environments/production.rb:
+      # asset host
+        config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass.herokuapp.com/'
 ```
 1. Generate a new secret token:
 
@@ -251,22 +276,6 @@ After you have obtained the key, you will need to set it as environment variable
     heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
     heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
-
-medford note: #10
-for dev box to work, need to update .env file to include:
-GOOGLE_MAPS_JAVASCRIPT_API_KEY=(your key)
-SECRET_KEY_BASE=(your key)
-
-medford note: #11
-need to update secrets.yml file as:
-development:
-  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
-  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-
-test:
-  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
-  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your
