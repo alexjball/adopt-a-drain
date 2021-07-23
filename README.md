@@ -131,10 +131,19 @@ medford update #6
         *** medford note: change the video link in /app/views/main/index.html.haml
 
         *** medford note: change the logos in /app/assets/images/logos
+
+        *** medford note: change the background color of the Adopt-A-Drain logo in app/assets/stylesheets/application.css
+
+        *** medford note: add logos to /assets/images/logos and choose logos to display in app/views/main/index.html.haml
+
+        *** medford note: update documents:
+            app/views/sidebar/_details.html.haml
+            app/views/sidebar/_guidelines.html.haml 
+            app/views/sidebar/_tos.html.haml 
+            app/views/thing_mailer/first_adoption_confirmation.html.erb
+            app/views/thing_mailer/second_adoption_confirmation.html.erb
+            app/views/thing_mailer/third_adoption_confirmation.html.erb
             
-```
-## Docker (continued)
-```
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
 
@@ -199,8 +208,6 @@ development:
 test:
   google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-
-** medford note - need to update initial map coordinates
 
 ## Deploying to Heroku
 A successful deployment to Heroku requires a few setup steps:
