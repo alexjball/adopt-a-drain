@@ -106,7 +106,7 @@ en:
     tweet_text: "Flooded streets aren't fun. I adopted my own SF storm drain at %{root_url}. Claim and name yours #sfsewer @sfwater"
     tos: "Volunteer Waiver"
   site:
-    description: "You can adopt one of Medford's 25,000+ storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the City avoid flooding."
+    description: "You can adopt one of Medford's storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the City avoid flooding."
   sponsors:
     built: "Code for Medford"
     cfa: "Code for America"
