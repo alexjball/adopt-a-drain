@@ -232,9 +232,11 @@ medford note:
 
     change /config/environments/production.rb:
       # asset host
-        config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass.herokuapp.com/'
+        config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass-3.herokuapp.com/'
 ```
 1. Generate a new secret token:
+
+    medford note: update Ruby version in Gemfile to 2.6.5
 
     ```
     rake secret
@@ -246,10 +248,18 @@ medford note:
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ``` 
 
+    medford note: add other heroku environment variables
+    heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=(key)
+    heroku config:set GOOGLE_MAPS_KEY=(key)
+    heroku config:set GOOGLE_GEOCODER_API_KEY=(key) 
+
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
     ```
-    medford note #7: before precompile: export GOOGLE_GEOCODER_API_KEY=(key)
+    medford note #7: before precompile: 
+        export GOOGLE_GEOCODER_API_KEY=(key)
+        create a `secret_key_base` for 'production' environment:
+            rails credentials:edit
     ```
     RAILS_ENV=production bundle exec rake assets:precompile
 

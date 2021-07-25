@@ -94,7 +94,7 @@ en:
   titles:
     adopt: "Adopt this %{thing}"
     adopted: "%{thing_name} has been adopted"
-    adopted_tagline: "%{count} %{things} adopted in SF"
+    adopted_tagline: "%{count} %{things} adopted in Medford"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
     main: "Adopt-a-%{thing} Medford"
@@ -103,7 +103,7 @@ en:
     sign_in: "Sign in to adopt this %{thing}"
     thank_you: "Thank you for adopting this %{thing}!"
     email_text: "I just adopted one of Medford's storm drains and pledged to help keep it clear of leaves and debris. You, too, can Adopt a Drain and help the City avoid flooding at %{root_url}."
-    tweet_text: "Flooded streets aren't fun. I adopted my own SF storm drain at %{root_url}. Claim and name yours #sfsewer @sfwater"
+    tweet_text: "Flooded streets aren't fun. I adopted my own Medford storm drain at %{root_url}. Claim and name yours adoptadrain.medford-ma.gov"
     tos: "Volunteer Waiver"
   site:
     description: "You can adopt one of Medford's storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the City avoid flooding."
