@@ -10,7 +10,7 @@ module ApplicationHelper
       ['Alaska', 'AK'],
       ['Arizona', 'AZ'],
       ['Arkansas', 'AR'],
-      ['California', 'CA'],
+      ['Massachusetts', 'CA'],
       ['Colorado', 'CO'],
       ['Connecticut', 'CT'],
       ['Delaware', 'DE'],
