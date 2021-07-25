@@ -1,4 +1,4 @@
-# Adopt-a-Drain - what I did
+# Adopt-a-Drain
 
 [![Join the chat at https://gitter.im/sfbrigade/adopt-a-drain](https://badges.gitter.im/sfbrigade/adopt-a-drain.svg)](https://gitter.im/sfbrigade/adopt-a-drain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -45,6 +45,7 @@ echo DB_USER=postgres >> .env
 ```
 *** Medford note: edit Dockerfile to reflect ruby 2.6.3
 *** Medford note: bundle update mimemagic 
+*** Medford note: add a .gitignore file
 
 # Medford update 3 - add user information to .env file
 USER=theuser
@@ -143,6 +144,17 @@ medford update #6
             app/views/thing_mailer/first_adoption_confirmation.html.erb
             app/views/thing_mailer/second_adoption_confirmation.html.erb
             app/views/thing_mailer/third_adoption_confirmation.html.erb
+
+            ** medford note: change defaults in config/locales/en.yml
+
+            defaults:
+                address_1: "1 Dr Carlton B Goodlett Pl."
+                address_2: "Suite 500"
+                city: "Medford"
+                city_state: "Medford, Massachusetts"
+                neighborhood: "Civic Center"
+                sms_number: "415-555-1212"
+                state: "CA"
             
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
