@@ -278,9 +278,6 @@ medford note:
 
     medford note:
     ```
-    heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
-    heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
-    heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
     heroku config:set USER=jeffkorenstein
     heroku config:set POSTGRES_PASSWORD=your_postgres_password
 
