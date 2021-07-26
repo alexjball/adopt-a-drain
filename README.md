@@ -252,7 +252,6 @@ medford note:
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ``` 
-
     medford note: add other heroku environment variables
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=(key)
     heroku config:set GOOGLE_MAPS_KEY=(key)
@@ -295,7 +294,19 @@ medford note:
 
 Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows, so if your city has more than 10,000 drains, you will need to upgrade to the $9/month plan.
 
-medford note: #9
+*** medford note: create a heroku.yml file - see https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
+    build:
+    docker:
+        web: Dockerfile
+    run:
+    web: bundle exec puma -C config/puma.rb
+
+** medford note: 
+    commit the file to repo
+    set stack to container
+    heroku stack:set container
+    git push heroku master
+
 ### Google Maps API Service  (from Adopt-A-Drain Savannah)
 You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
 After you have obtained the key, you will need to set it as environment variables.
