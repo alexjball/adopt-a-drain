@@ -238,7 +238,7 @@ medford note:
 
     change /config/environments/production.rb:
       # asset host
-        config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass-3.herokuapp.com/'
+        config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass.herokuapp.com/'
 ```
 1. Generate a new secret token:
 
