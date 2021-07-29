@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # asset host
-  config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass-3.herokuapp.com/'
+  config.action_controller.asset_host = 'https://adopt-a-drain-medford-mass.herokuapp.com/'
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -70,7 +70,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: 'adoptadrain.sfwater.org'}
+  config.action_mailer.default_url_options = {host: 'medford-ma.gov'}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -86,11 +86,21 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
+# ActionMailer::Base.smtp_settings = {
+#   address: 'smtp.sendgrid.net',
+#   port: '25',
+#   authentication: :plain,
+#   user_name: ENV['SENDGRID_USERNAME'],
+#   password: ENV['SENDGRID_PASSWORD'],
+#   domain: ENV['SENDGRID_DOMAIN'],
+# }
+
+# from adopt-a-drain-savannah
 ActionMailer::Base.smtp_settings = {
-  address: 'smtp.sendgrid.net',
-  port: '25',
+  address: ENV['MAILSERVER_HOST'],
+  port: '587',
   authentication: :plain,
-  user_name: ENV['SENDGRID_USERNAME'],
-  password: ENV['SENDGRID_PASSWORD'],
-  domain: ENV['SENDGRID_DOMAIN'],
+  user_name: ENV['MAILSERVER_USERNAME'],
+  password: ENV['MAILSERVER_PASSWORD'],
+  domain: ENV['MAILSERVER_DOMAIN'],
 }
