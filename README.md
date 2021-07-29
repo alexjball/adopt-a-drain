@@ -216,6 +216,7 @@ for dev box to work, need to update .env file to include:
     GOOGLE_GEOCODER_API_KEY=(your key)
     GOOGLE_MAPS_KEY=(your key)
     SECRET_KEY_BASE=(your key)
+    MAILGUN_API_KEY=(key)
 
 and need to update secrets.yml file as:
 development:
@@ -256,6 +257,7 @@ medford note:
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=(key)
     heroku config:set GOOGLE_MAPS_KEY=(key)
     heroku config:set GOOGLE_GEOCODER_API_KEY=(key) 
+    heroku config:set MAILGUN_API_KEY=(key)
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
@@ -294,19 +296,6 @@ medford note:
 
 Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows, so if your city has more than 10,000 drains, you will need to upgrade to the $9/month plan.
 
-*** medford note: create a heroku.yml file - see https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
-    build:
-    docker:
-        web: Dockerfile
-    run:
-    web: bundle exec puma -C config/puma.rb
-
-** medford note: 
-    commit the file to repo
-    set stack to container
-    heroku stack:set container
-    git push heroku master
-
 ### Google Maps API Service  (from Adopt-A-Drain Savannah)
 You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
 After you have obtained the key, you will need to set it as environment variables.
@@ -322,6 +311,11 @@ If you have a Google Analytics account you want to use to track visits to your d
     heroku config:set GOOGLE_ANALYTICS_DOMAIN=your_domain_name
 
 An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
+
+heroku config:set GOOGLE_ANALYTICS_ID=UA-??????
+heroku config:set GOOGLE_ANALYTICS_ID=your_id
+
+heroku config:set GOOGLE_ANALYTICS_DOMAIN=adopt-a-drain-medford-mass-3.herokuapp.com
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help improve this project.
