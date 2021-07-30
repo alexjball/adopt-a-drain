@@ -95,12 +95,13 @@ end
 #   domain: ENV['SENDGRID_DOMAIN'],
 # }
 
-# from adopt-a-drain-savannah
+# from adopt-a-drain-savannah AND https://www.leemunroe.com/send-automated-email-ruby-rails-mailgun/
+
 ActionMailer::Base.smtp_settings = {
-  address: ENV['MAILSERVER_HOST'],
-  port: '587',
   authentication: :plain,
-  user_name: ENV['MAILSERVER_USERNAME'],
+  address: ENV['MAILSERVER_HOST'], 
+  port: '587',
+  domain: ENV['MAILSERVER_DOMAIN'], 
+  user_name: ENV['MAILSERVER_USERNAME'], 
   password: ENV['MAILSERVER_PASSWORD'],
-  domain: ENV['MAILSERVER_DOMAIN'],
 }
