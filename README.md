@@ -216,7 +216,12 @@ for dev box to work, need to update .env file to include:
     GOOGLE_GEOCODER_API_KEY=(your key)
     GOOGLE_MAPS_KEY=(your key)
     SECRET_KEY_BASE=(your key)
-    MAILGUN_API_KEY=(key)
+    MAILSERVER_HOST=smtp.mailgun.org
+    MAILSERVER_DOMAIN=mg.medford-ma.gov 
+    MAILSERVER_USERNAME=postmaster@mg.medford-ma.gov
+    MAILSERVER_PASSWORD=(password)
+
+    may not be necessary: MAILGUN_API_KEY=(key)
 
 and need to update secrets.yml file as:
 development:
@@ -253,16 +258,20 @@ medford note:
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ``` 
-    medford note: add other heroku environment variables
+    medford note: set other environment variables in heroku
+
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=(key)
     heroku config:set GOOGLE_MAPS_KEY=(key)
     heroku config:set GOOGLE_GEOCODER_API_KEY=(key) 
-    heroku config:set MAILGUN_API_KEY=(key)
 
-    heroku config:set MAILSERVER_DOMAIN=medford-ma.gov
-    heroku config:set MAILSERVER_HOST=https://api:(your mailgun key)
-    heroku config:set MAILSERVER_USERNAME=enviro@medford-ma.gov
-    heroku config:set MAILSERVER_PASSWORD=(your password for mailgun)
+    heroku config:set MAILSERVER_HOST=smtp.mailgun.org
+    heroku config:set MAILSERVER_DOMAIN=mg.medford-ma.gov 
+    heroku config:set MAILSERVER_USERNAME=postmaster@mg.medford-ma.gov
+    heroku config:set MAILSERVER_PASSWORD=(password)
+    The MAILSERVER_USERNAME is set under Mailgun->Domain Settings->SMTP credentials. That same page also has a reset password option.
+
+    may not be necessary: heroku config:set MAILGUN_API_KEY=(key)
+***
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
@@ -302,8 +311,19 @@ medford note:
 Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows, so if your city has more than 10,000 drains, you will need to upgrade to the $9/month plan.
 
 ### Mailgun API Service  (from Adopt-A-Drain Savannah)
-    update environment.rb, production.rb (and development.rb?)
-    MAILSERVER_DOMAIN, MAILSERVER_HOST, MAILSERVER_PASSWORD, and MAILSERVER_USERNAME
+
+    update environment.rb, production.rb and development.rb to include:
+        ActionMailer::Base.smtp_settings = {
+        authentication: :plain,
+        address: ENV['MAILSERVER_HOST'], #smtp.mailgun.org
+        port: '587',
+        domain: ENV['MAILSERVER_DOMAIN'], #mg.medford-ma.gov  ?
+        user_name: ENV['MAILSERVER_USERNAME'], #enviro@medford-ma.gov?
+        password: ENV['MAILSERVER_PASSWORD'], #which password?
+        }
+
+    in app/mailers/application_mailer.rb change the address
+    'Adopt a Drain Medford <enviro@medford-ma.gov>'
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your deployment of this app, just set your ID and your domain name as environment variables:
