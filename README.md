@@ -259,7 +259,7 @@ medford note:
     heroku config:set GOOGLE_GEOCODER_API_KEY=(key) 
     heroku config:set MAILGUN_API_KEY=(key)
 
-    heroku config:set MAILSERVER_DOMAIN=mg.medford-ma.gov
+    heroku config:set MAILSERVER_DOMAIN=medford-ma.gov
     heroku config:set MAILSERVER_HOST=https://api:(your mailgun key)
     heroku config:set MAILSERVER_USERNAME=enviro@medford-ma.gov
     heroku config:set MAILSERVER_PASSWORD=(your password for mailgun)
@@ -313,10 +313,8 @@ If you have a Google Analytics account you want to use to track visits to your d
 
 An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
 
-heroku config:set GOOGLE_ANALYTICS_ID=UA-??????
-heroku config:set GOOGLE_ANALYTICS_ID=your_id
-
-heroku config:set GOOGLE_ANALYTICS_DOMAIN=adopt-a-drain-medford-mass-3.herokuapp.com
+heroku config:set GOOGLE_ANALYTICS_ID=UA-203707839-1
+heroku config:set GOOGLE_ANALYTICS_DOMAIN=herokuapp.com
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help improve this project.
