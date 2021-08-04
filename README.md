@@ -173,6 +173,9 @@ for binding.pry to work: https://gist.github.com/briankung/ebfb567d149209d2d3085
     First, add pry-rails to your Gemfile: gem 'pry-rails', group: :development
     Second, rebuild your Docker container to install the gems: docker-compose build
 
+medford note: 
+update image files in app/assets/images/logos/
+
 # Load data:
 docker-compose run --rm web bundle exec rake data:load_drains
     medford note 15: then restart server (docker-compose up)
