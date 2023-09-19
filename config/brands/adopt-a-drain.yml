@@ -1,7 +1,9 @@
 name: Adopt-a-Drain
 sign_in: Sign in to adopt a drain
 past_tense_verb: adopted
-what_does: What does it mean to adopt a drain
-gis_icon_1: In need of Adoption
+what_does: What does it mean to adopt a drain?
+gis_icon_1: In Need of Adoption
 gis_icon_2: Adopted
 gis_icon_3: Adopted by you
+imperative: adopt
+gerund: adopting

@@ -3,7 +3,7 @@
 en:
   buttons:
     abandon: "Abandon this %{thing}"
-    adopt: "Adopt12!"
+    adopt: "{capitalize(c(brand.imperative))}!"
     back: "Back"
     change_password: "Change my password"
     close: "Close"
@@ -17,7 +17,7 @@ en:
     sign_up_or_in: "Register / Sign in"
     update: "Update"
   subjects:
-    update_report: "%{title} import (%{deleted_adopted_count} adopted %{things} removed, %{created_count} %{things} added, %{deleted_unadopted_count} unadopted %{things} removed)"
+    update_report: "%{title} import (%{deleted_adopted_count} %{c(brand.past_tense_verb)} %{things} removed, %{created_count} %{things} added, %{deleted_unadopted_count} un%{c(brand.past_tense_verb)} %{things} removed)"
   captions:
     optional: "(optional)"
     private: "(private)"
@@ -33,7 +33,7 @@ en:
     thing: "drain"
     things: "drains"
     this_thing: "This %{thing}"
-    tagline: "What does it mean to adopt01 a drain?"
+    tagline: "%{c(brand.what_does)}"
     tos: "By signing up, you agree to the %{tos}."
     voice_number: "415-555-1212"
     zip: "94015-2013"
@@ -73,7 +73,7 @@ en:
     special: "This %{thing} is special! Learn why."
   notices:
     abandoned: "%{thing} abandoned!"
-    adopted: "You just adopt02ed a %{thing}!"
+    adopted: "You just %{c(brand.past_tense_verb)} a %{thing}!"
     alpha: >
       We're just getting started! We'd love to get your <a
       href='%{feedback_url}'>feedback</a> or your help with the <a
@@ -88,21 +88,21 @@ en:
     signed_up: "Thanks for signing up!"
     stolen: "%{thing} stolen!"
   titles:
-    adopt: "Adopt11 this %{thing}"
-    adopted: "%{thing_name} has been adopt03ed"
-    adopted_tagline: "%{count} %{things} adopt04ed in %{city}"
+    adopt: "%{capitalize(c(imperative))} this %{thing}"
+    adopted: "%{thing_name} has been %{c(brand.past_tense_verb)}"
+    adopted_tagline: "%{count} %{things} %{c(brand.past_tense_verb)} in %{city}"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
-    main: "Adopt05-a-%{thing} %{city}"
+    main: "%{c(brand.name)} %{city}"
     ofline: "of %{organization}"
     priority_html: "<strong>%{thing_title} in Need</strong> - this %{thing} tends to get dirtier than its siblings and needs more TLC"
-    sign_in: "Sign in to adopt06 this %{thing}"
-    thank_you: "Thank you for adopt07ing this %{thing}!"
-    email_text: "I just adopted08 one of %{city}'s storm drains and pledged to help keep it clear of leaves and debris. You, too, can Adopt09 a Drain and help the City avoid flooding at %{root_url}."
-    tweet_text: "Flooded streets aren't fun. I adopted10 my own %{city} storm drain at %{root_url}. Claim and name yours."
+    sign_in: "%{c(brand.sign_in)}"
+    thank_you: "Thank you for {c(brand.gerund)} this %{thing}!"
+    email_text: "I just %{c(brand.past_tense_verb)} one of %{city}'s storm drains and pledged to help keep it clear of leaves and debris. You, too, can %{capitalize(c(brand.imperative))} a Drain and help the City avoid flooding at %{root_url}."
+    tweet_text: "Flooded streets aren't fun. I %{c(brand.past_tense_verb)} my own %{city} storm drain at %{root_url}. Claim and name yours."
     tos: "Volunteer Waiver"
   site:
-    description: "You can adopt11 one of %{city}'s storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the City avoid flooding."
+    description: "You can %{c(brand.imperative)} one of %{city}'s storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the City avoid flooding."
   sponsors:
     built: "Code for San Francisco"
     cfa: "Code for America"

@@ -1,7 +1,8 @@
 name: Storm Stewards
 sign_in: Sign in to be a Storm Steward
 past_tense_verb: claimed
-what_does: What does it mean to be a Storm Steward
+what_does: What does it mean to be a Storm Steward?
 gis_icon_1: Unclaimed
 gis_icon_2: Claimed
 gis_icon_3: In need of care
+imperative: claim
