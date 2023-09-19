@@ -170,7 +170,6 @@ class BrandSchema
 
   @@schema = Dry::Schema.Params do
     required(:name).filled(:string)
-    required(:sign_in).filled(:string)
   end
 end
 
