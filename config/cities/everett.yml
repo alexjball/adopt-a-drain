@@ -15,6 +15,9 @@ city:
   instagram: https://www.instagram.com/cityofeverettma/
   twitter: https://twitter.com/cityofeverettma?lang=en
   linkedin: https://www.linkedin.com/company/everettma/
+  brand:
+  # From adopt-a-drain.yml
+  name: Adopt-a-Drain
 site:
   domains: [localhost, everett.localhost, everett.mysticdrains.org]
   main_url: https://everett.mysticdrains.org/
