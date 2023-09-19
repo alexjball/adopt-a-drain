@@ -3,7 +3,7 @@
 en:
   buttons:
     abandon: "Abandon this %{thing}"
-    adopt: "{capitalize(c(brand.imperative))}!"
+    adopt: "%{capitalize(c(brand.imperative))}!"
     back: "Back"
     change_password: "Change my password"
     close: "Close"
@@ -90,7 +90,8 @@ en:
   titles:
     adopt: "%{capitalize(c(imperative))} this %{thing}"
     adopted: "%{thing_name} has been %{c(brand.past_tense_verb)}"
-    adopted_tagline: "%{count} %{things} %{c(brand.past_tense_verb)} in %{city}"
+    # adopted_tagline: "%{count} %{things}  %{c(brand.past_tense_verb)} in %{city}"
+    adopted_tagline: "%{count} %{things} in %{city}"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
     main: "%{c(brand.name)} %{city}"
