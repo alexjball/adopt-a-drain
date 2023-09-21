@@ -7,6 +7,43 @@
     = f.label "name", t("labels.name_thing", :thing => t("defaults.thing")), :id => "thing_name_label", :class => "control-label"
     = f.text_field "adopted_name", :value => @thing.name, :class => "form-control"
   %fieldset.form-group
-    = f.submit t("buttons.adopt"), :class => "btn btn-primary btn-block"
+    -# buttons.adopt
+    = f.submit c("brand.button_adopt").capitalize, :class => "btn btn-primary btn-block"
+
+    -# subjects.update_report
+    = f.submit c("brand.update_report"), :class => "btn btn-primary btn-block"
+
+    -# subjects.tagline
+    = f.submit c("brand.default_tagline"), :class => "btn btn-primary btn-block"
+
+    -# notices.adopted
+    = f.submit c("brand.notices_adopted"), :class => "btn btn-primary btn-block"
+
+    -# titles.adopt 
+    = f.submit c("brand.title_adopt"), :class => "btn btn-primary btn-block"
+
+    -# titles.adopted 
+    = f.submit c("brand.title_adopted"), :class => "btn btn-primary btn-block"
+
+    -# titles.adopted_tagline 
+    = f.submit c("brand.title_adopted_tagline"), :class => "btn btn-primary btn-block"
+
+    -# titles.main 
+    = f.submit c("brand.title_main"), :class => "btn btn-primary btn-block"
+
+    -# titles.sign_in 
+    = f.submit c("brand.sign_in"), :class => "btn btn-primary btn-block"
+
+    -# titles.email_text 
+    = f.submit c("brand.thank_you"), :class => "btn btn-primary btn-block"
+
+    -# titles.email_text 
+    = f.submit c("brand.title_email_text"), :class => "btn btn-primary btn-block"
+
+    -# titles.tweet_text 
+    = f.submit c("brand.title_tweet_text"), :class => "btn btn-primary btn-block"
+
+    -# titles.description 
+    = f.submit c("brand.title_descriptin"), :class => "btn btn-primary btn-block"
 
   = render partial: 'things/detail'
