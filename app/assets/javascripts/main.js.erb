@@ -168,7 +168,7 @@ $(function() {
 
   var icons = {
       available: {
-        name: "%{c(brand.gis_icon_3)}",
+        name: `${cityConfig.gis_icon_3}`,
         title:  'Sewer',
         icon: constants.toSewerMarkerImage
       },
@@ -183,12 +183,12 @@ $(function() {
         icon: constants.priorityMarkerImage
       }, %>
       adopted: {
-        name: "%{c(brand.gis_icon_2)}",
+        name: `${cityConfig.gis_icon_2}`,
         title: "Adopted by other",
         icon: constants.adoptedMarkerImage
       },
       adopted_by_you: {
-        name: "%{c(brand.gis_icon_2)} by you",
+        name: `${cityConfig.gis_icon_2} by you`,
         title: 'Adopted by you',
         icon: constants.adoptedByYouImage
       }
